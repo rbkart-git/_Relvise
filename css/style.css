@@ -89,3 +89,7 @@ h6 {
 .block {
 	color: #343434;
 }
+p {
+	font-size: 25px;
+	color: pink;
+}
