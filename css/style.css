@@ -1,70 +1,31 @@
-/* -------------------------- Обнуление стилей CSS -------------------------- */
-* {
+/* -------- Обнуление стилей CSS -------- */
+
+*, *::after, *::before {
 	padding: 0;
 	margin: 0;
 	border: 0;
-}
-
-*,
-*::before,
-*::after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
 :focus,
 :active {
 	outline: none;
 }
-
 a:focus,
 a:active {
 	outline: none;
 }
-
-nav,
-footer,
-header,
-aside {
-	display: block;
-}
-
-html,
-body {
-	width: 100%;
-	height: 100%;
-	font-size: 100%;
-	line-height: 1;
-	font-size: 14px;
-	-ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-}
-
-input,
-button,
-textarea {
-	font-family: inherit;
-}
-
-button {
-	cursor: pointer;
-}
-
 a,
 a:visited {
 	text-decoration: none;
 }
-
-ul li {
+ul, ol, li {
 	list-style: none;
 }
-
 img {
 	vertical-align: top;
 }
-
 h1,
 h2,
 h3,
@@ -74,22 +35,109 @@ h6 {
 	font-size: inherit;
 	font-weight: 400;
 }
-
-.text-original {
-	margin: 0px 0px 50px 0px;
-	font-size: 20px;
+nav,
+footer,
+header,
+aside {
+	display: block;
+}
+html,
+body {
+	width: 100%;
+	height: 100%;
+	line-height: 1;
+	font-size: 16px;
+	color: rgb(37, 43, 66);
+	font-family: "Montserrat";
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,
+button,
+textarea {
+	font-family: inherit;
+}
+button {
+	cursor: pointer;
+}
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+}
+._container { /* Технический класс (_container) не является БЭМ блоком и предназначен для назначения общих стилей */
+	max-width: 1045px;
+	margin: 0 auto;
+	padding: 0 15px; /* Для "отлипания" логотипа от левого края экрана при уменьшении его ширины (адаптиве) добавил паддинги слева и справа и изменил значение box-sizing с border-box на content-box, что позволило не учитывать паддинги в общей ширине контейнера, т.е. ширина контейнера как была 1045px так и осталась" */
+	box-sizing: content-box;
 }
 
-.text {
-	font-size: 20px;
-	font-family: "PT Sans";
-	font-style: italic;
-}
+/* -------- блок header -------- */
 
-.block {
-	color: #343434;
+.header {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+	z-index: 100;
 }
-p {
-	font-size: 25px;
-	color: pink;
+.header__container {
+	display: flex;
+	min-height: 104px;
+	align-items: center;
+}
+._container {
+}
+.header__logo {
+	color: rgb(37, 43, 66);
+	font-family: Montserrat;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 32px;
+	letter-spacing: 0.1px;
+	text-align: left;
+}
+.header__menu {
+	margin-left: 132px;
+}
+.menu {
+	padding: 5px 0; /* Отступ безопасности. Предназначен для случаев, когда заказчик будет менять количество элемнтов вёрстки (в данном случае элементов меню) и чтобы не происходило прилипание элементов к границам контейнера и экрана в целом */
+}
+.header__list {
+	display: flex;
+	flex-wrap: wrap;
+}
+.header__item {
+	margin-right: 21px;
+}
+.header__item:last-child {
+	margin-right: 0;
+}
+.header__link {
+	color: rgb(115, 115, 115);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: calc(24 / 14 * 100%); /*calc(line-height (значение из макета) / font-size * 100%) лучше писать так, чтобы при смене шрифта межстрочный интервал соответствовал новому значению шрифта */
+	letter-spacing: 0.2px;
+	text-align: center;
+}
+@media (max-width:992px) {
+	.header__menu {
+		margin-left: 80px;
+	}
+	.header__link {
+		font-size: 16px; /* при изменении размера шрифта автоматически поменяется line-height, т.к. он задан в % */
+	}
+}
+@media (max-width:767px) {
+	.header__menu {
+		margin-left: 40px;
+	}
+	.header__link {
+		font-size: 18px;
+	}
+	.header__container {
+		min-height: 72px;
+	}
 }
