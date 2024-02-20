@@ -73,10 +73,10 @@ button {
 	padding: 0 15px; /* Для "отлипания" логотипа от левого края экрана при уменьшении его ширины (адаптиве) добавил паддинги слева и справа и изменил значение box-sizing с border-box на content-box, что позволило не учитывать паддинги в общей ширине контейнера, т.е. ширина контейнера как была 1045px так и осталась" */
 	box-sizing: content-box;
 }
-.ibg { /* Технический класс, позволяющий делать из картинки, вставленной через <img />, фактически фонове изображение. Делается это для упрощения вывода фонового изображения через бэкенд. Это гораздо проще, чем работать со стилями из админки CMS. */
+._ibg { /* Технический класс, позволяющий делать из картинки, вставленной через <img />, фактически фонове изображение. Делается это для упрощения вывода фонового изображения через бэкенд. Это гораздо проще, чем работать со стилями из админки CMS. */
 	position: relative;
 }
-.ibg img {
+._ibg img {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -99,9 +99,7 @@ button {
 	min-height: 104px;
 	align-items: center;
 }
-._container {
-}
-.header__logo {
+eader__logo {
 	color: rgb(37, 43, 66);
 	font-family: Montserrat;
 	font-size: 24px;
@@ -154,37 +152,170 @@ button {
 		min-height: 72px;
 	}
 }
-
+@media (max-width:440px) {
+	.header__link {
+		font-size: 16px;
+	}
+}
 /* -------- блок page -------- */
 
 .page {
 	flex: 1 1 auto; /* Здесь мы позволяем блоку main увеличиваться и уменьшаться, а так же базовый размер назначается автоматически, что обеспечивает прижатие футера к низу страницы */
 }
+
 .page__main-block {
 }
-.main-block {
+.page__services {
 }
-.main-block__container {
+.main-block {
+	position: relative;
+}
+.main-block__body {
+	padding: 184px 0 191px 0;
+	position: relative;
+	z-index: 2;
+	max-width: 400px;
+}
+.main-block__body >*:not(:last-child) { /* Очень крутая конструкция!!! А именно. Происходит обращение ко всем объектам .main-block__body первого уровня вложенности, за исключением последнего. Если вдруг заказчик будет менять количество блоков, то наша вёрстка не сломается и будет выглядеть достойно, т.к. к каждому элементу первого уровня вложенности применён отступ. ЭТО КРУТО!!! */
+	margin: 0 0 35px 0;
+}
+.main-block__title {
+	color: rgb(37, 43, 66);
+	font-family: Montserrat;
+	font-size: 58px;
+	font-weight: 800;
+	line-height: calc(80 / 58 * 100%);
+	letter-spacing: 0.2px;
+	text-align: left;
+}
+.main-block__text {
+	color: rgb(115, 115, 115);
+	font-family: Montserrat;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: calc(30 / 20 * 100%);
+	letter-spacing: 0.2px;
+	text-align: left;
+}
+.main-block__buttons {
+	display: flex;
+	flex-wrap: wrap;
+}
+.main-block__button {
+	border-radius: 37px;
+	display: flex;
+	align-items: center;
+	min-height: 48px;
+	justify-content: space-between;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: calc(28 / 14 * 100%);
+	letter-spacing: 0.2px;
+	text-align: center;
+	padding: 10px 36px;
+	margin-right: 10px;
+	text-align: center;
+}
+.main-block__button_orange {
+	background: rgb(255, 123, 71);
+	color: rgb(255, 255, 255);
+}
+.main-block__button_border {
+	border: 1px solid rgb(13, 92, 99);
+	color: rgb(13, 92, 99);
+}
+.main-block__image {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
+@media (max-width: 1400px) {
+	.main-block__image img{
+		object-position: right;
+	}
+}
+@media (max-width: 992px) {
+	.main-block__image {
+		opacity: 0.7;
+	}
+	.header__link {
+		color: rgb(37, 43, 66);
+	}
+	.main-block__text {
+		color: rgb(37, 43, 66);
+	}
+	.main-block__body {
+		padding: 120px 0 191px 0;
+	}
+}
+@media (max-width: 440px) {
+	.main-block__body {
+		padding: 100px 0 191px 0;
+	}
+	.main-block__title {
+		font-size: 42px;
+	}
+}
+@media (max-width: 479px) {
+	.main-block__button {
+		flex: 1 1 100%;
+		justify-content: center;
+	}
+	.main-block__button_orange {
+		margin-bottom: 10px;
+	}
+}
+
+/* -------- блок services -------- */
+
+
+.services {
+}
+.services__container {
 }
 ._container {
 }
-.main-block__body {
+.services__body {
+	display: flex;
+	margin: 0 -15px;
 }
-.main-block__title {
+.services__column {
+	padding: 0 15px;
+	flex: 0 1 33.333%; /* Назначаем ширину колонки 1/3 от всей ширины контейнера, флекс-контейнер я раздвинул по 15 пикселей влево и вправо, а саму колонку сдвинул по 15 пикселей с обоих сторон => получаем необходимый отступ между колонками в 30 пикселей (30/2=15). */
 }
-.main-block__text {
+.services__item {
+	box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.07);
+	background: rgb(255, 255, 255);
+	padding: 35px 40px;
 }
-.main-block__buttons {
+.item-service {
 }
-.main-block__button {
+.item-service__icon {
+	margin-bottom: 13.37px;
 }
-.main-block__button_border {
+.item-service__title {
+	color: rgb(37, 43, 66);
+	font-family: Montserrat;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: calc(32 / 24 * 100%);
+	letter-spacing: 0.1px;
+	text-align: left;
+	margin-bottom: 10px;
 }
-.main-block__image {
+.item-service__text {
+	color: rgb(115, 115, 115);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: calc(20 / 14 * 100%);
+	letter-spacing: 0.2px;
+	text-align: left;
 }
-
-
-
 
 
 
