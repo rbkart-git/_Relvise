@@ -99,7 +99,7 @@ button {
 	min-height: 104px;
 	align-items: center;
 }
-eader__logo {
+.header__logo {
 	color: rgb(37, 43, 66);
 	font-family: Montserrat;
 	font-size: 24px;
@@ -154,7 +154,7 @@ eader__logo {
 }
 @media (max-width:440px) {
 	.header__link {
-		font-size: 16px;
+		font-size: 15px;
 	}
 }
 /* -------- блок page -------- */
@@ -166,6 +166,9 @@ eader__logo {
 .page__main-block {
 }
 .page__services {
+	position: relative;
+	margin: -111px 0px 0px 0px; /* Отрицательный margin потому что нам нужно, чтобы все остальные блоки подтягивались вверх за карточками. В противном случае там будет дыра в 111px.*/
+	z-index: 2;
 }
 .main-block {
 	position: relative;
@@ -277,26 +280,35 @@ eader__logo {
 }
 .services__container {
 }
-._container {
-}
 .services__body {
 	display: flex;
 	margin: 0 -15px;
+	flex-wrap: wrap;
 }
 .services__column {
 	padding: 0 15px;
 	flex: 0 1 33.333%; /* Назначаем ширину колонки 1/3 от всей ширины контейнера, флекс-контейнер я раздвинул по 15 пикселей влево и вправо, а саму колонку сдвинул по 15 пикселей с обоих сторон => получаем необходимый отступ между колонками в 30 пикселей (30/2=15). */
 }
 .services__item {
+	height: 100%;
 	box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.07);
 	background: rgb(255, 255, 255);
 	padding: 35px 40px;
 }
-.item-service {
+.services__item >*:not(:last-child) {
+	margin: 0 0 10px 0;
 }
-.item-service__icon {
-	margin-bottom: 13.37px;
+.item-service_green {
+	box-shadow: 0px 13px 19px 0px rgba(0, 0, 0, 0.07);
+	background: rgb(13, 92, 99);
 }
+.item-service_green > .item-service__title {
+	color: rgb(255, 255, 255);
+}
+.item-service_green > .item-service__text {
+	color: rgb(255, 255, 255);
+}
+
 .item-service__title {
 	color: rgb(37, 43, 66);
 	font-family: Montserrat;
@@ -305,7 +317,6 @@ eader__logo {
 	line-height: calc(32 / 24 * 100%);
 	letter-spacing: 0.1px;
 	text-align: left;
-	margin-bottom: 10px;
 }
 .item-service__text {
 	color: rgb(115, 115, 115);
@@ -317,9 +328,31 @@ eader__logo {
 	text-align: left;
 }
 
+@media (max-width: 992px) {
+	.services__column {
+		flex: 0 1 50%;
+		margin-bottom: 30px;
+	}
+	.services__column:last-child {
+		flex: 1 1 100%;
+		margin-bottom: 0px;
+	}
+}
 
+@media (max-width: 700px) {
+	.services__column {
+		flex: 0 1 100%;
+	}
+}
 
-
+@media (max-width: 450px) {
+	.services__column {
+		margin-bottom: 20px;
+	}
+	.services__column:last-child {
+		margin-bottom: 0px;
+	}
+}
 
 
 /* -------- блок footer -------- */
