@@ -195,6 +195,8 @@ button {
 	margin: -111px 0px 0px 0px; /* Отрицательный margin потому что нам нужно, чтобы все остальные блоки подтягивались вверх за карточками. В противном случае там будет дыра в 111px.*/
 	z-index: 2;
 }
+.page__advice {
+}
 .main-block {
 	position: relative;
 }
@@ -395,7 +397,7 @@ button {
 }
 .experience__item {
 	text-align: center;
-	padding: 30px 35px;
+	padding: 30px 33px;
 	background: rgb(255, 255, 255);
 }
 .item-experience__icon {
@@ -449,9 +451,108 @@ button {
 	}
 }
 
+/* -------- блок advice -------- */
 
 
+.advice {
+	padding: 125px 0px 80px 0px;
+}
+.advice__container {
+}
+.advice__header {
+	margin-bottom: 45px;
+}
 
+.advice__body {
+	margin: 0 -21px -30px 0px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.advice__column {
+	padding: 0 21px 30px 0px;
+	flex: 0 1 25%;
+}
+.advice__item {
+	
+}
+.item-advice {
+	background: rgb(255, 255, 255);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.item-advice__container {
+	padding: 30px;
+	flex: 1 1 auto;
+}
+.item-advice__title {
+	color: rgb(37, 43, 66);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: calc(24 / 16 * 100%);
+	letter-spacing: 0.1px;
+	text-align: left;
+}
+.item-advice__text {
+	color: rgb(115, 115, 115);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: 0.2px;
+	text-align: left;
+}
+.item-advice__container > *:not(:last-child) {
+	margin: 0px 0px 15px 0px;
+}
+.item-advice__image {
+	padding: 0px 0px calc(138 / 230 * 100%) 0px; /* Картинки пока не видно, т.к.на неё действует _ibg. Чтобы показать её делаем следующее: берем размеры картинки из макета (230px ширина и 138px высота) и переводим в %, т.е. 138 / 230 * 100% = 60%.  */
+}
+@media (max-width: 1060px) {
+	.advice {
+		padding: 60px 0px 30px 0px;
+	}
+	.advice__column {
+		flex: 0 1 50%;
+	}
+	.item-advice__title {
+		font-size: 24px;
+	}
+	.item-advice__text {
+		font-size: 18px;
+	}
+}
+@media (max-width: 800px) {
+	.item-advice__title {
+		font-size: 16px;
+	}
+	.item-advice__text {
+		font-size: 14px;
+	}
+}
+@media (max-width: 600px) {
+	.advice {
+		padding: 40px 0px 20px 0px;
+	}
+	.advice__column {
+		flex: 0 1 100%;
+	}
+	.item-advice__title {
+		font-size: 18px;
+	}
+	.item-advice__text {
+		font-size: 14px;
+	}
+}
+@media (max-width: 400px) {
+	.item-advice__title {
+		font-size: 16px;
+	}
+	.item-advice__text {
+		font-size: 14px;
+	}
+}
 
 
 
