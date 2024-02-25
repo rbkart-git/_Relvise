@@ -195,7 +195,12 @@ button {
 	margin: -111px 0px 0px 0px; /* Отрицательный margin потому что нам нужно, чтобы все остальные блоки подтягивались вверх за карточками. В противном случае там будет дыра в 111px.*/
 	z-index: 2;
 }
-.page__advice {
+.page__who {
+}
+.page__subscribe {
+}
+.page__clients:not(:last-child) {
+	margin: 0px 0px 10px 0px;
 }
 .main-block {
 	position: relative;
@@ -457,8 +462,6 @@ button {
 .advice {
 	padding: 125px 0px 80px 0px;
 }
-.advice__container {
-}
 .advice__header {
 	margin-bottom: 45px;
 }
@@ -471,9 +474,6 @@ button {
 .advice__column {
 	padding: 0 21px 30px 0px;
 	flex: 0 1 25%;
-}
-.advice__item {
-	
 }
 .item-advice {
 	background: rgb(255, 255, 255);
@@ -552,6 +552,247 @@ button {
 	.item-advice__text {
 		font-size: 14px;
 	}
+}
+
+/* -------- блок who -------- */
+
+
+.who {
+	padding: 80px 0px 136px 0px;
+	background: rgb(255, 255, 255);
+}
+
+.who__header {
+	margin: 0px 0px 100px 0px;
+}
+.who__body {
+	display: flex;
+	align-items: flex-start;
+}
+.who__video {
+	flex: 0 0 57%; /* 57% = (ширина видео по макету / ширина контейнера по макету * 100 %) */
+	position: relative;
+	padding: 0px 0px 42.27% 0px; /* 42.27% = (высота видео по макету / ширину контейнера по макету * 100%)*/
+}
+.who__video > iframe {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+}
+.who__content {
+	flex: 1 1 auto;
+	padding: 20px 0px 0px 121px;
+}
+.who__top:not(:last-child) {
+	margin: 0px 0px 50px 0px;
+}
+.who__title {
+	color: rgb(37, 43, 66);
+	font-family: Montserrat;
+	font-size: 40px;
+	font-weight: 700;
+	line-height: calc(57 / 40 * 100%);
+	letter-spacing: 0.2px;
+	text-align: left;
+}
+.who__title:not(:last-child) {
+	margin: 0px 0px 10px 0px;
+}
+.who__text {
+	color: rgb(115, 115, 115);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: 0.2px;
+	text-align: left;
+}
+
+.who__item {
+	display: flex;
+}
+.who__item:not(:last-child) {
+	margin: 0px 0px 30px 0px;
+}
+.item-who__icon {
+	flex: 0 0 32px;
+}
+.item-who__body {
+	flex: 1 1 auto;
+	padding: 0px 0px 0px 20px;
+}
+.item-who__title {
+	color: rgb(37, 43, 66);
+	font-family: Montserrat;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: calc(24 / 16 * 100%);
+	letter-spacing: 0.1px;
+	text-align: left;
+}
+.item-who__title:not(:last-child) {
+	margin: 0px 0px 5px 0px;
+}
+.item-who__text {
+	color: rgb(115, 115, 115);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: calc(24 / 14 * 100%);
+	letter-spacing: 0.2px;
+	text-align: left;
+}
+@media(max-width: 1070px) {
+	.who__content {
+		padding: 0px 0px 0px 50px;
+	}
+}
+@media(max-width: 950px) {
+	.who__body {
+		flex-direction: column-reverse;
+		align-items: stretch;
+	}
+	.who {
+		padding: 30px 0px 30px 0px;
+	}
+	.who__header {
+		margin: 0px 0px 50px 0px;
+	}
+	.who__title {
+		font-size: 24px;
+	}
+	.who__video {
+		padding: 0px 0px 56.25% 0px;/* 56.25% = (высота видео / ширину видео * 100%) - исходные размеры видеоролика*/
+	}
+	.who__video:not(:last-child) {
+		margin: 50px 0px 0px 0px;
+	}
+}
+@media(max-width: 600px) {
+	.who {
+		padding: 15px 0px 15px 0px;
+	}
+	.who__header {
+		margin: 0px 0px 25px 0px;
+	}
+	.who__top:not(:last-child) {
+		margin: 0px 0px 25px 0px;
+	}
+	.who__item:not(:last-child) {
+		margin: 0px 0px 20px 0px;
+	}
+	.who__content {
+		padding: 0px 0px 0px 15px;
+	}
+}
+@media(max-width: 460px) {
+	.who__title {
+		text-align: center;
+	}
+	.who__text {
+		text-align: center;
+	}
+	.item-who__body {
+		padding: 0px 0px 0px 10px;
+	}
+}
+
+/* -------- блок clients -------- */
+
+
+.clients {
+	padding: 50px 0px;
+}
+.clients__container {
+}
+.clients__items {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+.clients__item {
+	flex: 0 1 16.667%;
+	text-align: center;
+	padding: 8px 15px;
+	min-width: 140px; /* Для картинок в подобных галереях всегда добавлять данные характеристики для надёжности. И теперь всё равно какое изображение туда добавят, оно будет в указанных рамках и не вылезет куда не нужно. */
+}
+.clients__item img {
+	max-width: 100%; /* Для картинок в подобных галереях всегда добавлять данные характеристики для надёжности. И теперь всё равно какое изображение туда добавят, оно будет в указанных рамках и не вылезет куда не нужно. */
+}
+@media(max-width: 650px) {
+	.clients {
+		padding: 30px 0px;
+	}
+}
+
+/* -------- блок subscribe -------- */
+
+
+.subscribe {
+}
+.subscribe__container {
+}
+.subscribe__body {
+	display: flex;
+	margin: 0 30px;
+	padding: 30px 50px;
+	align-items: center;
+	border-radius: 2px;
+	background: rgb(23, 33, 60);
+}
+.subscribe__title {
+	flex: 0 1 50%;
+	color: rgb(255, 255, 255);
+	font-family: Montserrat;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: calc(32 / 24 * 100%);
+	letter-spacing: 0.1px;
+	text-align: left;
+}
+.subscribe__form {
+	flex: 0 1 50%;
+	align-items: center;
+	display: flex;
+}
+.subscribe__input {
+	flex: 1 1 auto;
+	min-height: 58px;
+	padding: 15px 20px;
+	border: 1px solid rgb(230, 230, 230);
+	border-radius: 5px 0px 0px 5px;
+	background: rgb(249, 249, 249);
+	color: rgb(115, 115, 115);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: calc(28 / 14 * 100%);
+	letter-spacing: 0.2px;
+	text-align: left;
+	border-right: 0;
+	}
+.subscribe__button {
+	border: 1px solid rgb(230, 230, 230);
+	border-radius: 0px 5px 5px 0px;
+	background: rgb(255, 123, 71);
+	display: flex;
+	min-height: 58px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-content: center;
+	color: rgb(255, 255, 255);
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: calc(28 / 14 * 100%);
+	letter-spacing: 0.2px;
+	text-align: center;
+	padding: 15px 22px;
 }
 
 
